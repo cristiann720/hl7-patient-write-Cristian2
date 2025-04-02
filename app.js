@@ -52,7 +52,7 @@ document.getElementById('patientForm').addEventListener('submit', function(event
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(patient)
+        body: JSON.stringify(patients)
     })
     .then(response => response.json())
     .then(data => {
