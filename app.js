@@ -1,50 +1,65 @@
-document.getElementById('patientForm').addEventListener('submit', function(event) {
+document.getElementById('serviceRequestForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     // Obtener los valores del formulario
     const name = document.getElementById('name').value;
     const familyName = document.getElementById('familyName').value;
-    const gender = document.getElementById('gender').value;
     const birthDate = document.getElementById('birthDate').value;
     const identifierSystem = document.getElementById('identifierSystem').value;
     const identifierValue = document.getElementById('identifierValue').value;
-    const cellPhone = document.getElementById('cellPhone').value;
     const email = document.getElementById('email').value;
-    const address = document.getElementById('address').value;
-    const city = document.getElementById('city').value;
-    const postalCode = document.getElementById('postalCode').value;
+    const laboratoryAnalysis = document.getElementById('laboratoryAnalysis').value
+
 
     // Crear el objeto Patient en formato FHIR
-    const patient = {
-        resourceType: "Patient",
-        name: [{
-            use: "official",
-            given: [name],
-            family: familyName
-        }],
-        gender: gender,
-        birthDate: birthDate,
-        identifier: [{
-            system: identifierSystem,
-            value: identifierValue
-        }],
-        telecom: [{
-            system: "phone",
-            value: cellPhone,
-            use: "home"
-        }, {
-            system: "email",
-            value: email,
-            use: "home"
-        }],
-        address: [{
-            use: "home",
-            line: [address],
-            city: city,
-            postalCode: postalCode,
-            country: "Colombia"
-        }]
-    };
+    const ServiceRequest = {
+        "resourceType": "ServiceRequest",
+        "id": "lab-order-001",
+        "status": "active",
+        "intent": "order",
+        "priority": "routine",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "Complete blood count (hemogram)"
+            }
+          ],
+          "text": "Hemograma completo"
+        },
+        "subject": {
+          "reference": "Patient/12345",
+          "display": "Juan Carlos Pérez"
+        },
+        "requester": {
+          "reference": "Practitioner/med-001",
+          "display": "Dra. Carmen Morales"
+        },
+        "specimen": [
+          {
+            "reference": "Specimen/sp-001",
+            "display": "Muestra de sangre venosa"
+          }
+        ],
+        "authoredOn": "2025-04-05T09:45:00Z",
+        "reasonCode": [
+          {
+            "text": "Fatiga persistente"
+          }
+        ],
+        "note": [
+          {
+            "text": "Realizar en ayunas"
+          }
+        ],
+        "supportingInfo": [
+          {
+            "reference": "Observation/obs-previous-001",
+            "display": "Hemoglobina baja en control anterior"
+          }
+        ]
+      };
 
     // Enviar los datos usando Fetch API
     fetch('https://hl7-fhir-ehr-Cristian2.onrender.com/patient', {

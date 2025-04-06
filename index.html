@@ -7,42 +7,86 @@
 </head>
 <body>
     <h1>Service Request para Sistema de Información de Laboratorio (LIS)R</h1>
-    <form id="patientForm">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <form id="serviceRequestForm">
+        <!-- Información del Paciente -->
+        <fieldset>
+            <legend>Información del Paciente</legend>
 
-        <label for="familyName">Apellido:</label>
-        <input type="text" id="familyName" name="familyName" required><br><br>
+            <label for="patientId">ID del Paciente:</label>
+            <input type="text" id="patientId" name="patientId" required><br><br>
 
-        <label for="birthDate">Fecha de Nacimiento:</label>
-        <input type="date" id="birthDate" name="birthDate" required><br><br>
+            <label for="patientName">Nombre Completo:</label>
+            <input type="text" id="patientName" name="patientName" required><br><br>
 
-        <label for="identifierSystem">Tipo de documento de identidad:</label>
-        <select id="identifierSystem" name="identifierSystem" required>
-            <option value="http://cedula">Cédula de ciudadanía</option>
-            <option value="http://pasaporte">Pasaporte</option>
-        </select><br><br>
+            <label for="patientBirthDate">Fecha de Nacimiento:</label>
+            <input type="date" id="patientBirthDate" name="patientBirthDate" required><br><br>
 
-        <label for="identifierValue">Número de documento:</label>
-        <input type="text" id="identifierValue" name="identifierValue" required><br><br>
+            <label for="patientIdentifierType">Tipo de Documento:</label>
+            <select id="patientIdentifierType" name="patientIdentifierType" required>
+                <option value="CC">Cédula de Ciudadanía</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="CE">Cédula de Extranjería</option>
+                <option value="PP">Pasaporte</option>
+            </select><br><br>
 
-        <label for="email">Correo electrónico:</label>
-        <input type="text" id="email" name="email" required><br><br>
+            <label for="patientIdentifier">Número de Documento:</label>
+            <input type="text" id="patientIdentifier" name="patientIdentifier" required><br><br>
 
-        <label for="laboratoryAnalysis">Tipo de muestra:</label>
-        <select id="laboratoryAnalisis" name="laboratoryAnalisis" required>
-            <option value="122555007">Sangre Venosa</option>
-            <option value="119297000">Sangre Capilar</option>
-            <option value="122575003">Orina Espontanea</option>    
-            <option value="122556008">Materia Fecal</option>    
-            <option value="258580003">Biobpsia de Tejido</option>
-            <option value="258606009">Saliva</option>    
-            
-        <label for="collectionDate">Fecha para la toma de muestra:</label>
-        <input type="date" id="collectiondate" name="collectionDate" required><br><br>
+            <label for="patientEmail">Correo Electrónico:</label>
+            <input type="email" id="patientEmail" name="patientEmail"><br><br>
+        </fieldset>
 
-        <label for="collectiontime">Hora de la cita:</label>
-        <input type="time" id="collectiontime" name="collectiontime" min="08:00" max="18:00" required><br><br>
+        <!-- Información del Solicitante -->
+        <fieldset>
+            <legend>Información del Médico Solicitante</legend>
+
+            <label for="requesterId">ID del Médico:</label>
+            <input type="text" id="requesterId" name="requesterId" required><br><br>
+
+            <label for="requesterName">Nombre del Médico:</label>
+            <input type="text" id="requesterName" name="requesterName" required><br><br>
+        </fieldset>
+
+        <!-- Detalles de la Solicitud -->
+        <fieldset>
+            <legend>Detalles de la Solicitud</legend>
+
+            <label for="serviceCode">Código del Servicio (LOINC):</label>
+            <input type="text" id="serviceCode" name="serviceCode" required><br><br>
+
+            <label for="serviceDescription">Descripción del Servicio:</label>
+            <input type="text" id="serviceDescription" name="serviceDescription" required><br><br>
+
+            <label for="specimenType">Tipo de Muestra:</label>
+            <select id="specimenType" name="specimenType" required>
+                <option value="venous-blood">Sangre Venosa</option>
+                <option value="capillary-blood">Sangre Capilar</option>
+                <option value="urine">Orina</option>
+                <option value="stool">Materia Fecal</option>
+                <option value="saliva">Saliva</option>
+                <option value="tissue-biopsy">Biopsia de Tejido</option>
+            </select><br><br>
+
+            <label for="collectionDate">Fecha de Toma de Muestra:</label>
+            <input type="date" id="collectionDate" name="collectionDate" required><br><br>
+
+            <label for="collectionTime">Hora de la Cita:</label>
+            <input type="time" id="collectionTime" name="collectionTime" min="08:00" max="18:00" required><br><br>
+
+            <label for="priority">Prioridad:</label>
+            <select id="priority" name="priority" required>
+                <option value="routine">Rutina</option>
+                <option value="urgent">Urgente</option>
+                <option value="asap">Lo antes posible</option>
+                <option value="stat">Inmediato</option>
+            </select><br><br>
+
+            <label for="reason">Razón de la Solicitud:</label>
+            <textarea id="reason" name="reason" rows="3" required></textarea><br><br>
+
+            <label for="notes">Notas Adicionales:</label>
+            <textarea id="notes" name="notes" rows="3"></textarea><br><br>
+        </fieldset>
 
         <button type="submit">Enviar</button>
     </form>
