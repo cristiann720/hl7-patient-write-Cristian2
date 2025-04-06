@@ -2,17 +2,21 @@ document.getElementById('serviceRequestForm').addEventListener('submit', functio
     event.preventDefault();
 
     // Obtener los valores del formulario
-    const name = document.getElementById('name').value;
-    const familyName = document.getElementById('familyName').value;
-    const birthDate = document.getElementById('birthDate').value;
-    const identifierSystem = document.getElementById('identifierSystem').value;
-    const identifierValue = document.getElementById('identifierValue').value;
-    const email = document.getElementById('email').value;
-    const laboratoryAnalysis = document.getElementById('laboratoryAnalysis').value
+    const patientId = document.getElementById('patientId').value;
+    const patientName = document.getElementById('patientName')
+    const patientBirthDate = document.getElementById('patientBirthDate').value;
+    const patientIdentifierType = document.getElementById('patientIdentifierType').value;
+    const patientIdentifier = document.getElementById('patientIdentifier').value;
+    const patientEmail = document.getElementById('patientEmail').value;
+    const requesterId = document.getElementById('requesterId').value;
+    const requesterName = document.getElementById('requesterName').value;
+    const serviceCode = document.getElementById('serviceCode').value;
+    const serviceDescription = document.getElementById('serviceDescription').value
+    const specimenType = document.getElementById('specimenType').value
 
 
-    // Crear el objeto Patient en formato FHIR
-    const ServiceRequest = {
+    // Crear el serviceRequest en formato FHIR
+    const serviceRequest = {
         "resourceType": "ServiceRequest",
         "id": "lab-order-001",
         "status": "active",
