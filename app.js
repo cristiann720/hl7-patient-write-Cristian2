@@ -2,17 +2,38 @@ document.getElementById('serviceRequestForm').addEventListener('submit', functio
     event.preventDefault();
 
     // Obtener los valores del formulario
-    const patientId = document.getElementById('patientId').value;
-    const patientName = document.getElementById('patientName')
-    const patientBirthDate = document.getElementById('patientBirthDate').value;
-    const patientIdentifierType = document.getElementById('patientIdentifierType').value;
-    const patientIdentifier = document.getElementById('patientIdentifier').value;
-    const patientEmail = document.getElementById('patientEmail').value;
-    const requesterId = document.getElementById('requesterId').value;
-    const requesterName = document.getElementById('requesterName').value;
-    const serviceCode = document.getElementById('serviceCode').value;
-    const serviceDescription = document.getElementById('serviceDescription').value
-    const specimenType = document.getElementById('specimenType').value
+    const data = {
+        patientIdentifierType: document.getElementById("patientIdentifierType").value,
+        patientId: document.getElementById("patientId").value,
+        patientName: document.getElementById("patientName").value,
+        requesterId: document.getElementById("requesterId").value,
+        requesterName: document.getElementById("requesterName").value,
+        specimenType: document.getElementById("specimenType").value,
+        collectionDate: document.getElementById("collectionDate").value,
+        collectionTime: document.getElementById("collectionTime").value,
+        priority: document.getElementById("priority").value,
+        reason: document.getElementById("reason").value,
+    };
+
+    try {
+        const response = await fetch("https://hl7-fhir-ehr-Cristian2.onrender.com/service_request", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        document.getElementById("result").innerText =
+            response.ok ? `Solicitud creada creada con ID: ${result.id}`
+                        : `Error ${result.detail || 'Error desconocido'}`;
+
+    } catch (error) {
+        document-getElementById("result").innerText = `Error al conectar con el servidor`;
+        console.error(error);
+    }
+
 
 
     // Crear el serviceRequest en formato FHIR

@@ -12,15 +12,6 @@
         <fieldset>
             <legend>Información del Paciente</legend>
 
-            <label for="patientId">ID del Paciente:</label>
-            <input type="text" id="patientId" name="patientId" required><br><br>
-
-            <label for="patientName">Nombre Completo:</label>
-            <input type="text" id="patientName" name="patientName" required><br><br>
-
-            <label for="patientBirthDate">Fecha de Nacimiento:</label>
-            <input type="date" id="patientBirthDate" name="patientBirthDate" required><br><br>
-
             <label for="patientIdentifierType">Tipo de Documento:</label>
             <select id="patientIdentifierType" name="patientIdentifierType" required>
                 <option value="CC">Cédula de Ciudadanía</option>
@@ -29,11 +20,12 @@
                 <option value="PP">Pasaporte</option>
             </select><br><br>
 
-            <label for="patientIdentifier">Número de Documento:</label>
-            <input type="text" id="patientIdentifier" name="patientIdentifier" required><br><br>
+            <label for="patientId">Número de documento del Paciente:</label>
+            <input type="text" id="patientId" name="patientId" required><br><br>
 
-            <label for="patientEmail">Correo Electrónico:</label>
-            <input type="email" id="patientEmail" name="patientEmail"><br><br>
+            <label for="patientName">Nombre Completo:</label>
+            <input type="text" id="patientName" name="patientName" required><br><br>
+
         </fieldset>
 
         <!-- Información del Solicitante -->
@@ -50,12 +42,6 @@
         <!-- Detalles de la Solicitud -->
         <fieldset>
             <legend>Detalles de la Solicitud</legend>
-
-            <label for="serviceCode">Código del Servicio (LOINC):</label>
-            <input type="text" id="serviceCode" name="serviceCode" required><br><br>
-
-            <label for="serviceDescription">Descripción del Servicio:</label>
-            <input type="text" id="serviceDescription" name="serviceDescription" required><br><br>
 
             <label for="specimenType">Tipo de Muestra:</label>
             <select id="specimenType" name="specimenType" required>
@@ -84,8 +70,6 @@
             <label for="reason">Razón de la Solicitud:</label>
             <textarea id="reason" name="reason" rows="3" required></textarea><br><br>
 
-            <label for="notes">Notas Adicionales:</label>
-            <textarea id="notes" name="notes" rows="3"></textarea><br><br>
         </fieldset>
 
         <button type="submit">Enviar</button>
